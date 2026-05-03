@@ -30,7 +30,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: var(--dark); }
 
-        /* ===== AUTH SCREENS ===== */
+        /* AUTH SCREENS */
         .auth-screen {
             min-height: 100vh;
             display: flex;
@@ -89,9 +89,11 @@
             margin-bottom: 20px; font-size: 13px; font-weight: 500; display: flex;
             align-items: center; gap: 10px;
         }
-        .forgot-box { margin-top: 12px; text-align: right; }
+        .auth-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+        .auth-tab { flex: 1; padding: 12px; border: 1.5px solid #e2e8f0; background: white; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; text-align: center; }
+        .auth-tab.active { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
 
-        /* ===== APP LAYOUT ===== */
+        /* APP LAYOUT */
         .app { display: none; min-height: 100vh; }
         .app.active { display: flex; }
 
@@ -104,11 +106,12 @@
         }
         .sidebar.collapsed { width: 76px; }
         .sidebar-header {
-            padding: 28px 24px; border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.08);
             display: flex; align-items: center; gap: 14px;
         }
+        .sidebar-header img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
         .sidebar-header i { font-size: 32px; color: var(--primary); filter: drop-shadow(0 0 8px rgba(99,102,241,0.5)); }
-        .sidebar-header h1 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+        .sidebar-header h1 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
         .sidebar.collapsed .sidebar-header h1, .sidebar.collapsed .nav-text, .sidebar.collapsed .user-info { display: none; }
 
         .nav-menu { padding: 20px 14px; flex: 1; }
@@ -136,11 +139,13 @@
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
         .user-avatar {
-            width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+            width: 40px; height: 40px; border-radius: 50%;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             display: flex; align-items: center; justify-content: center;
             font-weight: 700; font-size: 14px; box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+            overflow: hidden;
         }
+        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .user-details h4 { font-size: 14px; font-weight: 600; }
         .user-details p { font-size: 12px; color: rgba(255,255,255,0.5); }
 
@@ -411,12 +416,12 @@
         .action-btn.approve { background: #d1fae5; color: var(--success); }
         .action-btn.reject { background: #fee2e2; color: var(--danger); }
         .action-btn.pay { background: #dbeafe; color: #1e40af; }
-        .action-btn.reset { background: #e0e7ff; color: var(--primary); }
+        .action-btn.key { background: #e0e7ff; color: var(--primary); }
         .action-btn:hover { transform: scale(1.15) rotate(4deg); }
 
         .hidden { display: none !important; }
 
-        /* ===== UPGRADE PLANS LUXURY ===== */
+        /* UPGRADE PLANS LUXURY */
         .plan-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 32px; }
         .plan-card {
             background: white; border-radius: 24px; padding: 36px;
@@ -520,12 +525,14 @@
         }
         .staff-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
         .staff-avatar {
-            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            width: 80px; height: 80px; border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-light) 0%, #c7d2fe 100%);
             color: var(--primary); display: flex; align-items: center; justify-content: center;
             font-size: 28px; font-weight: 800; margin: 0 auto 16px;
             box-shadow: 0 4px 12px rgba(99,102,241,0.2);
+            overflow: hidden;
         }
+        .staff-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .staff-card h4 { font-size: 18px; margin-bottom: 6px; }
         .staff-card p { font-size: 14px; color: var(--gray); margin-bottom: 4px; }
         .staff-card .role-badge {
@@ -568,46 +575,26 @@
         .extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         @media (max-width: 640px) { .extras-grid { grid-template-columns: 1fr; } }
 
-        /* Luxury touches */
-        .luxury-gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .card-luxury {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border: 1px solid rgba(226,232,240,0.8);
-        }
-
-        /* Client Profile */
-        .client-profile-header {
-            display: flex; align-items: center; gap: 20px; margin-bottom: 24px;
-        }
-        .client-profile-avatar {
-            width: 64px; height: 64px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white; display: flex; align-items: center; justify-content: center;
-            font-size: 24px; font-weight: 700;
-        }
-        .client-profile-info h3 { font-size: 20px; margin-bottom: 4px; }
-        .client-profile-info p { color: var(--gray); font-size: 14px; }
-        .client-stat-box {
-            background: #f8fafc; border-radius: 12px; padding: 20px; text-align: center;
-        }
-        .client-stat-box h4 { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .client-stat-box p { font-size: 13px; color: var(--gray); }
-
-        /* Photo upload */
+        /* Photo Upload */
         .photo-upload {
-            width: 120px; height: 120px; border-radius: 50%; border: 2px dashed #cbd5e1;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            overflow: hidden; position: relative; background: #fafafa; transition: all 0.3s;
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; overflow: hidden; position: relative; background: #fafafa;
+            transition: all 0.3s;
         }
         .photo-upload:hover { border-color: var(--primary); background: var(--primary-light); }
         .photo-upload img { width: 100%; height: 100%; object-fit: cover; }
-        .photo-upload i { font-size: 32px; color: var(--gray); }
+        .photo-upload i { font-size: 24px; color: var(--gray); }
         .photo-upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-        
-        .setting-photo-row { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+
+        /* AI Verification Badge */
+        .ai-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;
+        }
+        .ai-verified { background: #d1fae5; color: #065f46; }
+        .ai-failed { background: #fee2e2; color: #991b1b; }
+        .ai-pending { background: #fef3c7; color: #92400e; }
     </style>
 </head>
 <body>
@@ -618,22 +605,29 @@
 
     <!-- ==================== AUTH SCREENS ==================== -->
     <div id="auth-screen" class="auth-screen">
+        <!-- LOGIN BOX -->
         <div class="auth-box" id="login-box">
             <div class="auth-logo">
                 <i class="fas fa-crown"></i>
                 <h1>ExpertBill Pro</h1>
                 <p>Ultimate Luxury Business Management Suite</p>
             </div>
-            <button class="auth-btn auth-btn-google" onclick="signInWithGoogle()">
-                <i class="fab fa-google"></i> Continue with Google
-            </button>
-            <div class="auth-divider">or sign in with email</div>
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchLoginTab('owner')" id="login-tab-owner">Business Owner</div>
+                <div class="auth-tab" onclick="switchLoginTab('staff')" id="login-tab-staff">Staff Member</div>
+            </div>
+            <div id="owner-login-fields">
+                <button class="auth-btn auth-btn-google" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <div class="auth-divider">or sign in with email</div>
+            </div>
             <input type="email" class="auth-input" id="login-email" placeholder="Email address">
             <input type="password" class="auth-input" id="login-password" placeholder="Password">
-            <div class="forgot-box">
+            <div style="text-align:right;margin:-8px 0 12px 0;">
                 <span class="auth-link" onclick="showForgotPassword()">Forgot Password?</span>
             </div>
-            <button class="auth-btn auth-btn-primary" onclick="signInWithEmail()">
+            <button class="auth-btn auth-btn-primary" onclick="signIn()">
                 <i class="fas fa-sign-in-alt"></i> Sign In
             </button>
             <div class="auth-footer">
@@ -641,6 +635,7 @@
             </div>
         </div>
 
+        <!-- REGISTER BOX (Owner Only) -->
         <div class="auth-box hidden" id="register-box">
             <div class="auth-logo">
                 <i class="fas fa-crown"></i>
@@ -660,6 +655,23 @@
             </div>
         </div>
 
+        <!-- FORGOT PASSWORD BOX -->
+        <div class="auth-box hidden" id="forgot-box">
+            <div class="auth-logo">
+                <i class="fas fa-key"></i>
+                <h1>Reset Password</h1>
+                <p>Enter your email to receive reset link</p>
+            </div>
+            <input type="email" class="auth-input" id="forgot-email" placeholder="Email address">
+            <button class="auth-btn auth-btn-primary" onclick="sendPasswordReset()">
+                <i class="fas fa-paper-plane"></i> Send Reset Link
+            </button>
+            <div class="auth-footer">
+                <span class="auth-link" onclick="showLogin()">Back to Login</span>
+            </div>
+        </div>
+
+        <!-- VERIFY BOX -->
         <div class="auth-box hidden" id="verify-box">
             <div class="auth-logo">
                 <i class="fas fa-envelope-open-text"></i>
@@ -677,21 +689,6 @@
                 <span class="auth-link" onclick="logout()">Back to Login</span>
             </div>
         </div>
-
-        <div class="auth-box hidden" id="forgot-box">
-            <div class="auth-logo">
-                <i class="fas fa-key"></i>
-                <h1>Reset Password</h1>
-                <p>Enter your email to receive reset instructions</p>
-            </div>
-            <input type="email" class="auth-input" id="forgot-email" placeholder="Email address">
-            <button class="auth-btn auth-btn-primary" onclick="sendPasswordReset()">
-                <i class="fas fa-paper-plane"></i> Send Reset Link
-            </button>
-            <div class="auth-footer">
-                <span class="auth-link" onclick="showLogin()">Back to Login</span>
-            </div>
-        </div>
     </div>
 
     <!-- ==================== APP SHELL ==================== -->
@@ -699,19 +696,48 @@
         <button class="mobile-toggle" onclick="toggleMobileSidebar()"><i class="fas fa-bars"></i></button>
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <i class="fas fa-crown"></i>
+                <div class="user-avatar" id="sidebarAvatar" style="width:42px;height:42px;font-size:16px;">
+                    <i class="fas fa-crown" id="sidebarAvatarIcon"></i>
+                </div>
                 <h1>ExpertBill Pro</h1>
             </div>
             <div class="toggle-btn" onclick="toggleSidebar()">
                 <i class="fas fa-chevron-left" id="toggleIcon"></i>
             </div>
             <nav class="nav-menu" id="navMenu">
-                <!-- Dynamic nav items inserted here -->
+                <div class="nav-item active" onclick="navigateTo('dashboard')">
+                    <i class="fas fa-chart-pie"></i><span class="nav-text">Dashboard</span>
+                </div>
+                <div class="nav-item" onclick="navigateTo('invoices')">
+                    <i class="fas fa-file-invoice"></i><span class="nav-text">Invoices</span>
+                </div>
+                <div class="nav-item" onclick="navigateTo('clients')">
+                    <i class="fas fa-users"></i><span class="nav-text">Clients</span>
+                </div>
+                <div class="nav-item owner-only hidden" onclick="navigateTo('stock')">
+                    <i class="fas fa-boxes"></i><span class="nav-text">Stock</span>
+                    <span class="nav-badge hidden" id="stockAlertBadge">0</span>
+                </div>
+                <div class="nav-item staff-only hidden" onclick="navigateTo('stock')">
+                    <i class="fas fa-boxes"></i><span class="nav-text">Stock</span>
+                    <span class="nav-badge hidden" id="stockAlertBadgeStaff">0</span>
+                </div>
+                <div class="nav-item owner-only hidden" onclick="navigateTo('reports')">
+                    <i class="fas fa-chart-line"></i><span class="nav-text">Reports</span>
+                </div>
+                <div class="nav-item owner-only hidden" onclick="navigateTo('staff')">
+                    <i class="fas fa-user-shield"></i><span class="nav-text">Staff</span>
+                </div>
+                <div class="nav-item owner-only hidden" onclick="navigateTo('upgrade')">
+                    <i class="fas fa-gem"></i><span class="nav-text">Upgrade Plan</span>
+                </div>
+                <div class="nav-item owner-only hidden" onclick="navigateTo('settings')">
+                    <i class="fas fa-cog"></i><span class="nav-text">Settings</span>
+                </div>
             </nav>
             <div class="sidebar-footer">
                 <div class="user-info">
-                    <img class="user-avatar" id="userAvatarImg" style="display:none;">
-                    <div class="user-avatar" id="userAvatarText">AD</div>
+                    <div class="user-avatar" id="userAvatar">AD</div>
                     <div class="user-details">
                         <h4 id="userName">Admin</h4>
                         <p id="userRole">Owner</p>
@@ -727,8 +753,8 @@
             <!-- DASHBOARD -->
             <div id="page-dashboard" class="page fade-in">
                 <div class="page-header">
-                    <div class="page-title"><h2>Dashboard</h2><p>Welcome back! Here's your business overview.</p></div>
-                    <button class="btn btn-primary" onclick="openInvoiceModal()"><i class="fas fa-plus"></i> New Invoice</button>
+                    <div class="page-title"><h2>Dashboard</h2><p>Welcome back! Here is your business overview.</p></div>
+                    <button class="btn btn-primary owner-only hidden" onclick="openInvoiceModal()"><i class="fas fa-plus"></i> New Invoice</button>
                 </div>
                 <div id="dashboardAlerts"></div>
                 <div class="stats-grid">
@@ -778,7 +804,7 @@
                     </div>
                     <div class="card-body" style="padding:0">
                         <table class="data-table">
-                            <thead><tr><th>Invoice #</th><th>Client</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+                            <thead><tr><th>Invoice #</th><th>Client</th><th>Date</th><th>Amount</th><th>Status</th><th>By</th></tr></thead>
                             <tbody id="recentInvoicesTable"></tbody>
                         </table>
                     </div>
@@ -828,7 +854,7 @@
                 </div>
             </div>
 
-            <!-- CLIENT DETAIL (Inline View) -->
+            <!-- CLIENT DETAIL -->
             <div id="page-client-detail" class="page hidden">
                 <div class="page-header">
                     <div class="page-title"><h2>Client Profile</h2><p>Detailed view with billing history.</p></div>
@@ -841,9 +867,9 @@
             <div id="page-stock" class="page hidden">
                 <div class="page-header">
                     <div class="page-title"><h2>Stock Management</h2><p>Track inventory with barcode scanning.</p></div>
-                    <div style="display:flex;gap:12px;">
+                    <div style="display:flex;gap:12px;" class="owner-only hidden">
                         <button class="btn btn-warning" onclick="openBarcodeModal()"><i class="fas fa-barcode"></i> Scan Barcode</button>
-                        <button class="btn btn-primary owner-only-btn" onclick="openStockModal()"><i class="fas fa-plus"></i> Add Product</button>
+                        <button class="btn btn-primary" onclick="openStockModal()"><i class="fas fa-plus"></i> Add Product</button>
                     </div>
                 </div>
                 <div id="stockAlerts"></div>
@@ -862,7 +888,7 @@
             </div>
 
             <!-- REPORTS -->
-            <div id="page-reports" class="page hidden owner-only-page">
+            <div id="page-reports" class="page hidden owner-only">
                 <div class="page-header">
                     <div class="page-title"><h2>Reports</h2><p>Financial insights and analytics.</p></div>
                 </div>
@@ -887,13 +913,10 @@
             </div>
 
             <!-- STAFF -->
-            <div id="page-staff" class="page hidden owner-only-page">
+            <div id="page-staff" class="page hidden owner-only">
                 <div class="page-header">
                     <div class="page-title"><h2>Staff Management</h2><p>Register and manage staff members.</p></div>
-                    <div style="display:flex;gap:12px;">
-                        <button class="btn btn-success" onclick="openInvoiceModal()"><i class="fas fa-file-invoice"></i> Create Invoice</button>
-                        <button class="btn btn-primary" onclick="openStaffModal()"><i class="fas fa-plus"></i> Add Staff</button>
-                    </div>
+                    <button class="btn btn-primary" onclick="openStaffModal()"><i class="fas fa-plus"></i> Add Staff</button>
                 </div>
                 <div class="card">
                     <div class="card-header"><h3>Staff Members</h3></div>
@@ -911,7 +934,7 @@
             </div>
 
             <!-- UPGRADE PLAN -->
-            <div id="page-upgrade" class="page hidden">
+            <div id="page-upgrade" class="page hidden owner-only">
                 <div class="page-header">
                     <div class="page-title"><h2>Upgrade Plan</h2><p>Unlock premium features for your business.</p></div>
                     <div id="currentPlanBadge"></div>
@@ -965,11 +988,11 @@
                         <button class="btn btn-primary" style="width:100%" onclick="selectPlan('enterprise', 400, 365)">Select Plan</button>
                     </div>
                 </div>
-                <div class="card owner-only-page hidden" id="pendingSubmissionsCard">
+                <div class="card" id="pendingSubmissionsCard">
                     <div class="card-header"><h3>Pending Receipt Submissions</h3></div>
                     <div class="card-body" style="padding:0">
                         <table class="data-table">
-                            <thead><tr><th>User</th><th>Plan</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+                            <thead><tr><th>User</th><th>Plan</th><th>Amount</th><th>Date</th><th>AI Status</th><th>Status</th><th>Actions</th></tr></thead>
                             <tbody id="pendingSubmissionsTable"></tbody>
                         </table>
                     </div>
@@ -977,22 +1000,18 @@
             </div>
 
             <!-- SETTINGS -->
-            <div id="page-settings" class="page hidden owner-only-page">
+            <div id="page-settings" class="page hidden owner-only">
                 <div class="page-header">
                     <div class="page-title"><h2>Settings</h2><p>Manage your business profile and preferences.</p></div>
                 </div>
                 <div class="card">
                     <div class="card-header"><h3>Business Information</h3></div>
                     <div class="card-body">
-                        <div class="setting-photo-row">
+                        <div style="display:flex;justify-content:center;margin-bottom:24px;">
                             <div class="photo-upload" onclick="document.getElementById('ownerPhotoInput').click()">
-                                <img id="ownerPhotoPreview" style="display:none;">
+                                <img id="ownerPhotoPreview" class="hidden">
                                 <i class="fas fa-camera" id="ownerPhotoIcon"></i>
-                                <input type="file" id="ownerPhotoInput" accept="image/*" onchange="handleOwnerPhoto(event)">
-                            </div>
-                            <div>
-                                <h4 style="margin-bottom:4px;">Business Logo / Owner Photo</h4>
-                                <p style="color:var(--gray);font-size:14px;">Click to upload a photo. This will appear on invoices.</p>
+                                <input type="file" id="ownerPhotoInput" accept="image/*" onchange="uploadOwnerPhoto(event)">
                             </div>
                         </div>
                         <div class="form-row">
@@ -1014,9 +1033,10 @@
                         </div>
                         <div class="form-group">
                             <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
-                                <input type="checkbox" id="setting-showStaff" style="width:18px;height:18px;cursor:pointer;">
-                                <span>Show Staff Member Name on Invoices</span>
+                                <input type="checkbox" id="setting-staff-id" style="width:18px;height:18px;">
+                                Require Staff ID on Invoices
                             </label>
+                            <p style="font-size:12px;color:var(--gray);margin-top:4px;">Show which staff member created each invoice</p>
                         </div>
                         <div style="margin-top: 24px;">
                             <button class="btn btn-primary" onclick="saveSettings()"><i class="fas fa-save"></i> Save Changes</button>
@@ -1044,7 +1064,7 @@
             <div class="modal-header"><h3 id="invoiceModalTitle">Create Invoice</h3><button class="modal-close" onclick="closeInvoiceModal()">&times;</button></div>
             <div class="modal-body">
                 <div class="form-row">
-                    <div class="form-group"><label>Client *</label><select class="form-control" id="inv-client"><option value="">Select Client</option></select></div>
+                    <div class="form-group"><label>Client *</label><select class="form-control" id="inv-client" onchange="onClientSelect()"><option value="">Select Client</option></select></div>
                     <div class="form-group"><label>Invoice #</label><input type="text" class="form-control" id="inv-number" readonly></div>
                 </div>
                 <div class="form-row">
@@ -1053,19 +1073,22 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group" id="stockSelectorBox">
-                        <label>Add from Stock (Auto Deduct)</label>
+                        <label>Add from Stock</label>
                         <select class="form-control" id="inv-stock-item" onchange="addStockItemToInvoice()"><option value="">Select Product from Stock...</option></select>
                     </div>
                     <div class="form-group">
-                        <label>Barcode Scan</label>
-                        <button class="btn btn-warning" style="width:100%" onclick="openBarcodeModalForInvoice()"><i class="fas fa-barcode"></i> Scan Barcode</button>
+                        <label>Warranty</label>
+                        <input type="text" class="form-control" id="inv-warranty" placeholder="e.g. 1 Year Manufacturer Warranty">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Warranty Information</label>
-                    <input type="text" class="form-control" id="inv-warranty" placeholder="e.g. 1 Year Warranty, 6 Months Service Warranty...">
+                <div class="form-group" id="staffSelectorBox" style="display:none;">
+                    <label>Issued By (Staff ID)</label>
+                    <select class="form-control" id="inv-staff-id"><option value="">Select Staff Member...</option></select>
                 </div>
-                <h4 style="margin: 28px 0 14px; font-size: 13px; text-transform: uppercase; color: var(--gray); letter-spacing: 1px; font-weight: 700;">Invoice Items</h4>
+                <div style="display:flex;gap:10px;margin-bottom:16px;">
+                    <button class="btn btn-outline btn-sm" onclick="openInvoiceBarcodeModal()"><i class="fas fa-barcode"></i> Scan Barcode</button>
+                </div>
+                <h4 style="margin: 20px 0 14px; font-size: 13px; text-transform: uppercase; color: var(--gray); letter-spacing: 1px; font-weight: 700;">Invoice Items</h4>
                 <div class="invoice-items" id="invoiceItems">
                     <div class="item-row header"><span>Description</span><span>Qty</span><span>Rate</span><span>Amount</span><span></span></div>
                 </div>
@@ -1102,6 +1125,17 @@
             <div class="modal-footer">
                 <button class="btn btn-outline" onclick="closeInvoiceModal()">Cancel</button>
                 <button class="btn btn-primary" onclick="saveInvoice()"><i class="fas fa-save"></i> Save Invoice</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Barcode Modal -->
+    <div class="modal-overlay" id="invoiceBarcodeModal">
+        <div class="modal sm">
+            <div class="modal-header"><h3>Scan Product Barcode</h3><button class="modal-close" onclick="closeInvoiceBarcodeModal()">&times;</button></div>
+            <div class="modal-body" style="text-align:center">
+                <div id="invoice-barcode-reader"></div>
+                <p style="margin-top:16px;color:var(--gray);font-size:14px">Point camera at product barcode</p>
             </div>
         </div>
     </div>
@@ -1182,19 +1216,18 @@
         <div class="modal sm">
             <div class="modal-header"><h3>Add Staff Member</h3><button class="modal-close" onclick="closeStaffModal()">&times;</button></div>
             <div class="modal-body">
-                <div style="text-align:center;margin-bottom:20px;">
-                    <div class="photo-upload" style="margin:0 auto;" onclick="document.getElementById('staffPhotoInput').click()">
-                        <img id="staffPhotoPreview" style="display:none;">
+                <div style="display:flex;justify-content:center;margin-bottom:20px;">
+                    <div class="photo-upload" onclick="document.getElementById('staffPhotoInput').click()">
+                        <img id="staffPhotoPreview" class="hidden">
                         <i class="fas fa-camera" id="staffPhotoIcon"></i>
-                        <input type="file" id="staffPhotoInput" accept="image/*" onchange="handleStaffPhoto(event)">
+                        <input type="file" id="staffPhotoInput" accept="image/*" onchange="previewStaffPhoto(event)">
                     </div>
-                    <p style="font-size:12px;color:var(--gray);margin-top:8px;">Click to add photo</p>
                 </div>
                 <div class="form-group"><label>Full Name *</label><input type="text" class="form-control" id="staff-name"></div>
                 <div class="form-group"><label>Email *</label><input type="email" class="form-control" id="staff-email"></div>
                 <div class="form-group"><label>Phone</label><input type="text" class="form-control" id="staff-phone"></div>
-                <div class="form-group"><label>Temporary Password</label><input type="text" class="form-control" id="staff-temp-pass" value="staff1234"></div>
-                <p style="font-size:12px;color:var(--gray);">Staff will use their email and this temporary password to login. They can change it after logging in.</p>
+                <div class="form-group"><label>Temporary Password</label><input type="text" class="form-control" id="staff-temp-pass" value="Staff@1234" readonly></div>
+                <p style="font-size:12px;color:var(--gray);">Staff will use their email and this temporary password to login. They can change it after first login.</p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-outline" onclick="closeStaffModal()">Cancel</button>
@@ -1213,7 +1246,7 @@
                 <div class="upload-zone" onclick="document.getElementById('receiptFile').click()">
                     <i class="fas fa-cloud-upload-alt"></i>
                     <p>Click to upload receipt image</p>
-                    <p class="small">Supported: JPG, PNG, PDF</p>
+                    <p class="small">Supported: JPG, PNG</p>
                 </div>
                 <input type="file" id="receiptFile" class="hidden" accept="image/*" onchange="handleReceiptUpload(event)">
                 <img id="receiptPreview" class="receipt-preview hidden">
@@ -1221,6 +1254,7 @@
                 <div id="ocrResultBox" class="hidden">
                     <label style="margin-top:20px;display:block;font-size:14px;font-weight:600;">AI Extracted Details</label>
                     <div class="ocr-result" id="ocrResult"></div>
+                    <div id="aiVerifyBadge" style="margin-top:12px;"></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1251,15 +1285,14 @@
         const db = getFirestore(app);
         const storage = getStorage(app);
         const googleProvider = new GoogleAuthProvider();
-        const API_KEY = firebaseConfig.apiKey;
 
         // ==================== STATE ====================
         window.AppState = {
-            user: null, profile: null, invoices: [], clients: [], stock: [], staff: [],
-            settings: { name:'ExpertBill Pro', email:'contact@expertbill.com', phone:'+1 (555) 123-4567', website:'www.expertbill.com', address:'123 Business Street\nNew York, NY 10001\nUnited States', taxRate:10, currency:'$', country:'US', bankDetails:'Bank of Ceylon, Acc: 94689713, Branch: Niwala, SWIFT: BCEYLKLX', showStaffOnInvoice: false, ownerPhotoUrl: '' },
+            user: null, profile: null, role: null, invoices: [], clients: [], stock: [], staff: [],
+            settings: { name:'ExpertBill Pro', email:'contact@expertbill.com', phone:'+1 (555) 123-4567', website:'www.expertbill.com', address:'123 Business Street\nNew York, NY 10001\nUnited States', taxRate:10, currency:'$', country:'US', bankDetails:'Bank of Ceylon, Acc: 94689713, Branch: Niwala, SWIFT: BCEYLKLX', requireStaffId:false, ownerPhoto:'' },
             currentPage: 'dashboard', editingInvoiceId: null, editingClientId: null, editingStockId: null,
-            selectedPlan: null, receiptImage: null, ocrText: '', barcodeScanner: null,
-            currentInvoiceId: null, barcodeContext: 'stock', staffPhotoFile: null, ownerPhotoFile: null
+            selectedPlan: null, receiptImage: null, ocrText: '', barcodeScanner: null, invoiceBarcodeScanner: null,
+            currentInvoiceId: null, loginTab: 'owner', staffPhotoFile: null
         };
 
         const countries = [
@@ -1305,6 +1338,13 @@
         ];
 
         // ==================== AUTH ====================
+        window.switchLoginTab = (tab) => {
+            window.AppState.loginTab = tab;
+            document.getElementById('login-tab-owner').classList.toggle('active', tab==='owner');
+            document.getElementById('login-tab-staff').classList.toggle('active', tab==='staff');
+            document.getElementById('owner-login-fields').classList.toggle('hidden', tab!=='owner');
+        };
+
         window.signInWithGoogle = async () => {
             showLoading(true);
             try {
@@ -1314,21 +1354,27 @@
             showLoading(false);
         };
 
-        window.signInWithEmail = async () => {
+        window.signIn = async () => {
             const email = document.getElementById('login-email').value.trim();
             const pass = document.getElementById('login-password').value;
+            const tab = window.AppState.loginTab;
             if(!email||!pass){ showToast('Please fill all fields','error'); return; }
             showLoading(true);
             try {
                 const cred = await signInWithEmailAndPassword(auth, email, pass);
                 await reload(cred.user);
+                const profileSnap = await getDoc(doc(db, 'users', cred.user.uid));
+                const profile = profileSnap.exists() ? profileSnap.data() : { role: 'owner' };
+                if(tab==='owner' && profile.role!=='owner') { showToast('This account is not an owner account','error'); await signOut(auth); showLoading(false); return; }
+                if(tab==='staff' && profile.role!=='staff') { showToast('This account is not a staff account','error'); await signOut(auth); showLoading(false); return; }
                 if(!cred.user.emailVerified && !cred.user.providerData.some(p=>p.providerId==='google.com')) {
                     showToast('Please verify your email first','warning');
                     document.getElementById('login-box').classList.add('hidden');
                     document.getElementById('verify-box').classList.remove('hidden');
                     showLoading(false); return;
                 }
-            } catch(e) { showToast(e.message, 'error'); showLoading(false); }
+            } catch(e) { showToast(e.message, 'error'); }
+            showLoading(false);
         };
 
         window.showForgotPassword = () => {
@@ -1339,11 +1385,8 @@
         window.sendPasswordReset = async () => {
             const email = document.getElementById('forgot-email').value.trim();
             if(!email){ showToast('Please enter your email','error'); return; }
-            try {
-                await sendPasswordResetEmail(auth, email);
-                showToast('Password reset email sent! Check your inbox.');
-                showLogin();
-            } catch(e) { showToast(e.message, 'error'); }
+            try { await sendPasswordResetEmail(auth, email); showToast('Password reset email sent!'); showLogin(); }
+            catch(e){ showToast(e.message,'error'); }
         };
 
         window.registerAccount = async () => {
@@ -1352,11 +1395,8 @@
             const pass = document.getElementById('reg-password').value;
             const country = document.getElementById('reg-country').value;
             const business = document.getElementById('reg-business').value.trim();
-
-            if(!name||!email||!pass||!country){ showToast('Please fill all fields','error'); return; }
+            if(!name||!email||!pass||!country||!business){ showToast('Please fill all fields','error'); return; }
             if(pass.length<6){ showToast('Password must be at least 6 characters','error'); return; }
-            if(!business){ showToast('Please enter business name','error'); return; }
-
             showLoading(true);
             try {
                 const cred = await createUserWithEmailAndPassword(auth, email, pass);
@@ -1364,8 +1404,9 @@
                 await sendEmailVerification(cred.user);
                 await setDoc(doc(db, 'users', cred.user.uid), {
                     uid: cred.user.uid, name, email, role: 'owner', country, businessName: business,
-                    createdAt: serverTimestamp(), planExpiry: null
+                    createdAt: serverTimestamp(), planExpiry: null, photoURL: ''
                 });
+                await setDoc(doc(db, 'settings', cred.user.uid), window.AppState.settings);
                 showToast('Account created! Please verify your email.');
                 document.getElementById('register-box').classList.add('hidden');
                 document.getElementById('verify-box').classList.remove('hidden');
@@ -1384,7 +1425,8 @@
             const ref = doc(db, 'users', user.uid);
             const snap = await getDoc(ref);
             if(!snap.exists()) {
-                await setDoc(ref, { uid:user.uid, name:user.displayName||'User', email:user.email, role:defaultRole, country:'US', createdAt:serverTimestamp(), planExpiry:null, businessName:'' });
+                await setDoc(ref, { uid:user.uid, name:user.displayName||'User', email:user.email, role:defaultRole, country:'US', createdAt:serverTimestamp(), planExpiry:null, businessName:'', photoURL:'' });
+                await setDoc(doc(db, 'settings', user.uid), window.AppState.settings);
             }
         }
 
@@ -1395,15 +1437,16 @@
                     document.getElementById('auth-screen').style.display = 'flex';
                     document.getElementById('login-box').classList.add('hidden');
                     document.getElementById('register-box').classList.add('hidden');
-                    document.getElementById('verify-box').classList.remove('hidden');
                     document.getElementById('forgot-box').classList.add('hidden');
+                    document.getElementById('verify-box').classList.remove('hidden');
                     document.getElementById('app-shell').classList.remove('active');
                     return;
                 }
                 window.AppState.user = user;
                 const profileSnap = await getDoc(doc(db, 'users', user.uid));
                 window.AppState.profile = profileSnap.exists() ? profileSnap.data() : { role:'owner', name:user.displayName||'User' };
-                if(window.AppState.profile.role==='staff' && !window.AppState.profile.ownerId) {
+                window.AppState.role = window.AppState.profile.role;
+                if(window.AppState.role==='staff' && !window.AppState.profile.ownerId) {
                     showToast('Staff account not properly linked','error'); await signOut(auth); return;
                 }
                 initApp();
@@ -1411,8 +1454,8 @@
                 document.getElementById('auth-screen').style.display = 'flex';
                 document.getElementById('login-box').classList.remove('hidden');
                 document.getElementById('register-box').classList.add('hidden');
-                document.getElementById('verify-box').classList.add('hidden');
                 document.getElementById('forgot-box').classList.add('hidden');
+                document.getElementById('verify-box').classList.add('hidden');
                 document.getElementById('app-shell').classList.remove('active');
             }
         });
@@ -1425,16 +1468,16 @@
             document.getElementById('app-shell').classList.add('active');
             document.getElementById('userName').textContent = profile.name || 'User';
             document.getElementById('userRole').textContent = isOwner ? 'Owner' : 'Staff Member';
-            
-            // Avatar setup
-            const avatarText = (profile.name || 'U').substring(0,2).toUpperCase();
-            const avatarImg = document.getElementById('userAvatarImg');
-            const avatarTxt = document.getElementById('userAvatarText');
-            if(profile.photoURL) { avatarImg.src = profile.photoURL; avatarImg.style.display = 'flex'; avatarTxt.style.display = 'none'; }
-            else { avatarTxt.textContent = avatarText; avatarImg.style.display = 'none'; avatarTxt.style.display = 'flex'; }
+            const avatar = document.getElementById('userAvatar');
+            if(profile.photoURL) { avatar.innerHTML = `<img src="${profile.photoURL}" style="width:100%;height:100%;object-fit:cover;">`; }
+            else { avatar.textContent = (profile.name || 'U').substring(0,2).toUpperCase(); }
+            const sideAvatar = document.getElementById('sidebarAvatar');
+            const sideIcon = document.getElementById('sidebarAvatarIcon');
+            if(profile.photoURL) { sideAvatar.innerHTML = `<img src="${profile.photoURL}" style="width:100%;height:100%;object-fit:cover;">`; sideIcon.classList.add('hidden'); }
+            else { sideAvatar.textContent = (profile.name || 'U').substring(0,2).toUpperCase(); sideIcon.classList.add('hidden'); }
 
-            // Build sidebar based on role
-            buildSidebar(isOwner);
+            document.querySelectorAll('.owner-only').forEach(el => { if(isOwner) el.classList.remove('hidden'); else el.classList.add('hidden'); });
+            document.querySelectorAll('.staff-only').forEach(el => { if(!isOwner) el.classList.remove('hidden'); else el.classList.add('hidden'); });
 
             const countryOpts = countries.map(c => `<option value="${c.code}">${c.name}</option>`).join('');
             document.getElementById('reg-country').innerHTML = '<option value="">Select Country</option>' + countryOpts;
@@ -1454,28 +1497,6 @@
             checkSubscriptionStatus();
         }
 
-        function buildSidebar(isOwner) {
-            const nav = document.getElementById('navMenu');
-            const items = [
-                {id:'dashboard', icon:'fa-chart-pie', text:'Dashboard'},
-                {id:'invoices', icon:'fa-file-invoice', text:'Invoices'},
-                {id:'clients', icon:'fa-users', text:'Clients'},
-                {id:'stock', icon:'fa-boxes', text:'Stock', badge:'stockAlertBadge'},
-                {id:'upgrade', icon:'fa-gem', text:'Upgrade Plan'},
-            ];
-            if(isOwner) {
-                items.splice(4, 0, {id:'reports', icon:'fa-chart-line', text:'Reports'});
-                items.splice(5, 0, {id:'staff', icon:'fa-user-shield', text:'Staff'});
-                items.push({id:'settings', icon:'fa-cog', text:'Settings'});
-            }
-            nav.innerHTML = items.map((item, idx) => `
-                <div class="nav-item ${idx===0?'active':''}" onclick="navigateTo('${item.id}')" data-page="${item.id}">
-                    <i class="fas ${item.icon}"></i><span class="nav-text">${item.text}</span>
-                    ${item.badge?`<span class="nav-badge hidden" id="${item.badge}">0</span>`:''}
-                </div>
-            `).join('');
-        }
-
         // ==================== NAVIGATION ====================
         window.navigateTo = (page) => {
             window.AppState.currentPage = page;
@@ -1483,7 +1504,7 @@
             const target = document.getElementById('page-'+page);
             if(target) target.classList.remove('hidden');
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => { if(n.dataset.page === page) n.classList.add('active'); });
+            document.querySelectorAll('.nav-item').forEach(n => { if(n.getAttribute('onclick')?.includes("'"+page+"'") || n.getAttribute('onclick')?.includes('"'+page+'"')) n.classList.add('active'); });
             if(page==='dashboard') renderDashboard();
             if(page==='invoices') renderInvoices();
             if(page==='clients') renderClients();
@@ -1502,13 +1523,15 @@
             icon.classList.toggle('fa-chevron-left'); icon.classList.toggle('fa-chevron-right');
         };
         window.toggleMobileSidebar = () => { document.getElementById('sidebar').classList.toggle('mobile-open'); };
-        window.showRegister = () => { document.getElementById('login-box').classList.add('hidden'); document.getElementById('register-box').classList.remove('hidden'); document.getElementById('verify-box').classList.add('hidden'); document.getElementById('forgot-box').classList.add('hidden'); };
-        window.showLogin = () => { document.getElementById('register-box').classList.add('hidden'); document.getElementById('login-box').classList.remove('hidden'); document.getElementById('verify-box').classList.add('hidden'); document.getElementById('forgot-box').classList.add('hidden'); };
+        window.showRegister = () => { document.getElementById('login-box').classList.add('hidden'); document.getElementById('register-box').classList.remove('hidden'); document.getElementById('forgot-box').classList.add('hidden'); document.getElementById('verify-box').classList.add('hidden'); };
+        window.showLogin = () => { document.getElementById('register-box').classList.add('hidden'); document.getElementById('login-box').classList.remove('hidden'); document.getElementById('forgot-box').classList.add('hidden'); document.getElementById('verify-box').classList.add('hidden'); };
 
         // ==================== SETTINGS ====================
         function loadSettings() {
             const uid = window.AppState.user.uid;
-            onSnapshot(doc(db, 'settings', uid), (snap) => {
+            const isOwner = window.AppState.profile.role === 'owner';
+            const settingsRef = isOwner ? doc(db, 'settings', uid) : doc(db, 'settings', window.AppState.profile.ownerId || uid);
+            onSnapshot(settingsRef, (snap) => {
                 if(snap.exists()) window.AppState.settings = { ...window.AppState.settings, ...snap.data() };
                 if(window.AppState.currentPage === 'settings') renderSettings();
             });
@@ -1521,24 +1544,26 @@
                 address: document.getElementById('setting-address').value, taxRate: parseFloat(document.getElementById('setting-tax').value)||0,
                 currency: document.getElementById('setting-currency').value, country: document.getElementById('setting-country').value,
                 bankDetails: document.getElementById('setting-bank').value,
-                showStaffOnInvoice: document.getElementById('setting-showStaff').checked
+                requireStaffId: document.getElementById('setting-staff-id').checked
             };
-            if(window.AppState.ownerPhotoFile) {
-                const fileRef = ref(storage, 'photos/owner_' + uid + '_' + Date.now());
-                await uploadBytes(fileRef, window.AppState.ownerPhotoFile);
-                s.ownerPhotoUrl = await getDownloadURL(fileRef);
-                window.AppState.ownerPhotoFile = null;
-            }
             await setDoc(doc(db, 'settings', uid), s);
             window.AppState.settings = { ...window.AppState.settings, ...s };
             showToast('Settings saved successfully');
         };
-        window.handleOwnerPhoto = (e) => {
+        window.uploadOwnerPhoto = async (e) => {
             const file = e.target.files[0]; if(!file) return;
-            window.AppState.ownerPhotoFile = file;
-            const preview = document.getElementById('ownerPhotoPreview');
-            preview.src = URL.createObjectURL(file); preview.style.display = 'block';
-            document.getElementById('ownerPhotoIcon').style.display = 'none';
+            showLoading(true);
+            try {
+                const fileRef = ref(storage, 'photos/owner_' + window.AppState.user.uid);
+                await uploadBytes(fileRef, file);
+                const url = await getDownloadURL(fileRef);
+                await updateDoc(doc(db, 'users', window.AppState.user.uid), { photoURL: url });
+                await updateDoc(doc(db, 'settings', window.AppState.user.uid), { ownerPhoto: url });
+                document.getElementById('ownerPhotoPreview').src = url; document.getElementById('ownerPhotoPreview').classList.remove('hidden');
+                document.getElementById('ownerPhotoIcon').classList.add('hidden');
+                showToast('Photo updated');
+            } catch(e){ showToast(e.message,'error'); }
+            showLoading(false);
         };
         function renderSettings() {
             const s = window.AppState.settings;
@@ -1549,17 +1574,11 @@
             document.getElementById('setting-address').value = s.address;
             document.getElementById('setting-tax').value = s.taxRate;
             document.getElementById('setting-bank').value = s.bankDetails || '';
-            document.getElementById('setting-showStaff').checked = s.showStaffOnInvoice || false;
-            
-            if(s.ownerPhotoUrl) {
-                document.getElementById('ownerPhotoPreview').src = s.ownerPhotoUrl;
-                document.getElementById('ownerPhotoPreview').style.display = 'block';
-                document.getElementById('ownerPhotoIcon').style.display = 'none';
-            }
-            
+            document.getElementById('setting-staff-id').checked = s.requireStaffId || false;
+            if(s.ownerPhoto) { document.getElementById('ownerPhotoPreview').src = s.ownerPhoto; document.getElementById('ownerPhotoPreview').classList.remove('hidden'); document.getElementById('ownerPhotoIcon').classList.add('hidden'); }
             const curSelect = document.getElementById('setting-currency');
             if(!curSelect.options.length) {
-                ['$','€','£','¥','₹','₩','A$','C$','CHF','SEK','NZ$','SGD','HK$','NOK','MX$','BRL','ZAR','LKR','RUB','AED','SAR','QAR','KWD','BHD','OMR','JOD','MAD','TND','EGP','NGN','KES','GHS','UGX','TZS','ZMW','BWP','NAD','MUR','SCR','MVR','NPR','BDT','PKR','IDR','PHP','THB','VND','MYR','MMK','KHR','LAK','BND','FJD','PGK','WST','TOP','VUV','SBD','KID','MNT','KZT','UZS','TJS','KGS','TKM','AFN','IRR','IQD','SYP','LBP','ILS','TRY','AZN','GEL','AMD','BYR','MDL','UAH','RSD','BGN','HUF','CZK','PLN','RON','HRK','DKK','ISK','ALL','BA','ME','RS','SI','SK','RU','KZ','BY','UA','MD','AZ','AM','GE','TJ','KG','UZ','TM','MN','CN','JP','KR','KP','VN','LA','KH','TH','MM','MY','SG','ID','PH','BN','TL','IN','LK','BD','NP','BT','MV','PK','AF','IR','IQ','SY','LB','JO','SA','YE','OM','AE','QA','BH','KW','TR','CY','MT','FO','GL','SJ','MC','AD','SM','VA','LI','GI','IM','JE','GG','AW','CW','SX','BQ','MF','BL','GP','MQ','YT','RE','PM','WF','PF','NC','TF','GF'].forEach(c => {
+                ['$','€','£','¥','₹','₩','A$','C$','CHF','SEK','NZ$','SGD','HK$','NOK','MX$','BRL','ZAR','LKR','RUB','AED','SAR','QAR','KWD','BHD','OMR','JOD','MAD','TND','EGP','NGN','KES','GHS','UGX','TZS','ZMW','BWP','NAD','MUR','SCR','MVR','NPR','BDT','PKR','IDR','PHP','THB','VND','MYR','MMK','KHR','LAK','BND','FJD','PGK','WST','TOP','VUV','SBD','KID','MNT','KZT','UZS','TJS','KGS','TKM','AFN','IRR','IQD','SYP','LBP','ILS','TRY','AZN','GEL','AMD','BYR','MDL','UAH','RSD','BGN','HUF','CZK','PLN','RON','HRK','DKK','ISK','ALL','BA','ME','RS','SI','SK'].forEach(c => {
                     const opt = document.createElement('option'); opt.value = c; opt.textContent = c; curSelect.appendChild(opt);
                 });
             }
@@ -1577,8 +1596,7 @@
                 window.AppState.clients = [];
                 snap.forEach(d => window.AppState.clients.push({id:d.id, ...d.data()}));
                 if(window.AppState.currentPage==='clients') renderClients();
-                if(window.AppState.currentPage==='invoices') updateClientSelect();
-                if(window.AppState.currentPage==='dashboard') renderDashboard();
+                updateClientSelect();
             });
         }
         window.openClientModal = () => {
@@ -1619,7 +1637,6 @@
             const totalBilled = clientInvoices.reduce((s,inv)=>s+(inv.total||0),0);
             const totalPaid = clientInvoices.filter(i=>i.status==='paid').reduce((s,inv)=>s+(inv.total||0),0);
             const totalPending = clientInvoices.filter(i=>i.status!=='paid').reduce((s,inv)=>s+(inv.total||0),0);
-
             document.getElementById('clientDetailContent').innerHTML = `
                 <div class="card">
                     <div class="card-body">
@@ -1683,7 +1700,6 @@
             });
         }
         window.openInvoiceModal = () => {
-            if(!checkSubscription()) return;
             window.AppState.editingInvoiceId = null;
             document.getElementById('invoiceModalTitle').textContent = 'Create Invoice';
             document.getElementById('inv-number').value = generateInvoiceNumber();
@@ -1691,23 +1707,20 @@
             document.getElementById('inv-discount').value = 0; document.getElementById('inv-extra').value = 0;
             setupDates();
             document.getElementById('invoiceItems').innerHTML = `<div class="item-row header"><span>Description</span><span>Qty</span><span>Rate</span><span>Amount</span><span></span></div>`;
-            addItemRow(); updateTotals(); updateStockSelector();
+            addItemRow(); updateTotals(); updateStockSelector(); updateStaffSelector();
+            const staffBox = document.getElementById('staffSelectorBox');
+            if(window.AppState.settings.requireStaffId && window.AppState.profile.role==='owner') staffBox.style.display = 'block'; else staffBox.style.display = 'none';
             document.getElementById('invoiceModal').classList.add('active');
         };
         window.closeInvoiceModal = () => document.getElementById('invoiceModal').classList.remove('active');
         function generateInvoiceNumber() { return 'INV-' + String(Date.now()).slice(-6); }
-        function setupDates() {
-            const today = new Date().toISOString().split('T')[0];
-            const due = new Date(); due.setDate(due.getDate()+30);
-            document.getElementById('inv-date').value = today;
-            document.getElementById('inv-due').value = due.toISOString().split('T')[0];
-        }
         window.addItemRow = () => {
             const container = document.getElementById('invoiceItems');
             const row = document.createElement('div'); row.className = 'item-row';
             row.innerHTML = `<input type="text" class="form-control item-desc" placeholder="Item description" oninput="updateTotals()"><input type="number" class="form-control item-qty" value="1" min="1" oninput="updateTotals()"><input type="number" class="form-control item-rate" value="0" min="0" step="0.01" oninput="updateTotals()"><input type="text" class="form-control item-amount" readonly value="$0.00"><button class="remove-item" onclick="this.parentElement.remove(); updateTotals();"><i class="fas fa-times"></i></button>`;
             container.appendChild(row);
         };
+        window.onClientSelect = () => {};
         window.updateTotals = () => {
             let subtotal = 0;
             document.querySelectorAll('.item-row:not(.header)').forEach(row => {
@@ -1755,15 +1768,7 @@
             const extra = extraType==='percent' ? subtotal*(extraVal/100) : extraVal;
             const isOwner = window.AppState.profile.role === 'owner';
             const ownerId = isOwner ? window.AppState.user.uid : (window.AppState.profile.ownerId || window.AppState.user.uid);
-            
-            // Deduct stock
-            for(const it of items) {
-                const stockItem = window.AppState.stock.find(s => s.name.toLowerCase() === it.desc.toLowerCase());
-                if(stockItem && stockItem.qty >= it.qty) {
-                    await updateDoc(doc(db, 'stock', stockItem.id), { qty: stockItem.qty - it.qty });
-                }
-            }
-            
+            const staffIdVal = document.getElementById('inv-staff-id').value;
             const invoice = {
                 clientId, number: document.getElementById('inv-number').value,
                 date: document.getElementById('inv-date').value, due: document.getElementById('inv-due').value,
@@ -1772,16 +1777,15 @@
                 notes: document.getElementById('inv-notes').value,
                 warranty: document.getElementById('inv-warranty').value,
                 ownerId, staffId: window.AppState.user.uid, staffName: window.AppState.profile.name,
+                assignedStaffId: staffIdVal || '',
                 createdAt: serverTimestamp()
             };
-            if(window.AppState.editingInvoiceId) { 
-                await updateDoc(doc(db, 'invoices', window.AppState.editingInvoiceId), invoice); 
-                showToast('Invoice updated'); 
+            for(const it of items) {
+                const stockItem = window.AppState.stock.find(s => s.name.toLowerCase() === it.desc.toLowerCase());
+                if(stockItem && stockItem.qty >= it.qty) await updateDoc(doc(db, 'stock', stockItem.id), { qty: stockItem.qty - it.qty });
             }
-            else { 
-                await addDoc(collection(db, 'invoices'), invoice); 
-                showToast('Invoice created'); 
-            }
+            if(window.AppState.editingInvoiceId) { await updateDoc(doc(db, 'invoices', window.AppState.editingInvoiceId), invoice); showToast('Invoice updated'); }
+            else { await addDoc(collection(db, 'invoices'), invoice); showToast('Invoice created'); }
             closeInvoiceModal();
         };
         window.editInvoice = (id) => {
@@ -1790,12 +1794,11 @@
             document.getElementById('invoiceModalTitle').textContent = 'Edit Invoice';
             document.getElementById('inv-number').value = inv.number; document.getElementById('inv-client').value = inv.clientId;
             document.getElementById('inv-date').value = inv.date; document.getElementById('inv-due').value = inv.due;
-            document.getElementById('inv-notes').value = inv.notes||''; 
-            document.getElementById('inv-warranty').value = inv.warranty||'';
+            document.getElementById('inv-notes').value = inv.notes||''; document.getElementById('inv-warranty').value = inv.warranty||'';
             document.getElementById('inv-discount').value = inv.discount||0;
-            document.getElementById('inv-discount-type').value = inv.discountType||'fixed'; 
-            document.getElementById('inv-extra').value = inv.extra||0;
+            document.getElementById('inv-discount-type').value = inv.discountType||'fixed'; document.getElementById('inv-extra').value = inv.extra||0;
             document.getElementById('inv-extra-type').value = inv.extraType||'fixed';
+            if(inv.assignedStaffId) document.getElementById('inv-staff-id').value = inv.assignedStaffId;
             const container = document.getElementById('invoiceItems');
             container.innerHTML = `<div class="item-row header"><span>Description</span><span>Qty</span><span>Rate</span><span>Amount</span><span></span></div>`;
             inv.items.forEach(item => {
@@ -1812,26 +1815,17 @@
             const client = window.AppState.clients.find(c=>c.id===inv.clientId);
             const s = window.AppState.settings;
             const isPaid = inv.status === 'paid';
-            const showStaff = s.showStaffOnInvoice && inv.staffName;
             document.getElementById('markPaidBtn').style.display = isPaid ? 'none' : 'inline-flex';
+            const staffInfo = inv.assignedStaffId ? (window.AppState.staff.find(st=>st.id===inv.assignedStaffId)?.name || inv.staffName || 'Staff') : (inv.staffName || 'Owner');
             document.getElementById('viewInvoiceContent').innerHTML = `
                 <div class="print-invoice" id="printArea">
                     <div class="print-header">
-                        <div>
-                            ${s.ownerPhotoUrl ? `<img src="${s.ownerPhotoUrl}" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:8px;">` : ''}
-                            <div class="print-logo">${s.name}</div>
-                            <p style="color:var(--gray);margin-top:4px;">${s.address.replace(/\n/g,'<br>')}</p>
-                            <p style="color:var(--gray);">${s.phone} | ${s.email}</p>
-                        </div>
+                        <div><div class="print-logo">${s.name}</div><p style="color:var(--gray);margin-top:4px;">${s.address.replace(/\n/g,'<br>')}</p><p style="color:var(--gray);">${s.phone} | ${s.email}</p></div>
                         <div class="print-meta"><div class="print-title">INVOICE</div><p><strong>${inv.number}</strong></p><p>Date: ${formatDateDisplay(inv.date)}</p><p>Due: ${formatDateDisplay(inv.due)}</p>${inv.paidDate?`<p style="color:var(--success);font-weight:700;">Paid: ${formatDateDisplay(inv.paidDate)}</p>`:''}</div>
                     </div>
                     <div style="display:flex;gap:40px;margin-bottom:30px;">
                         <div class="print-section" style="flex:1;"><h4>Bill To</h4><p><strong>${client?client.fname+' '+client.lname:'Unknown'}</strong></p><p>${client?.company||''}</p><p>${client?.email||''}</p><p>${client?.phone||''}</p><p>${client?.address||''}</p></div>
-                        <div class="print-section" style="flex:1;">
-                            <h4>Status</h4>
-                            <p><span class="badge badge-${inv.status}" style="font-size:14px;padding:6px 16px;">${inv.status.toUpperCase()}</span></p>
-                            ${showStaff ? `<p style="margin-top:8px;font-size:13px;color:var(--gray)"><strong>Served by:</strong> ${inv.staffName}</p>` : ''}
-                        </div>
+                        <div class="print-section" style="flex:1;"><h4>Status</h4><p><span class="badge badge-${inv.status}" style="font-size:14px;padding:6px 16px;">${inv.status.toUpperCase()}</span></p><p style="margin-top:8px;font-size:13px;color:var(--gray)">Issued By: ${staffInfo}</p></div>
                     </div>
                     <table class="print-table"><thead><tr><th>Description</th><th style="text-align:center;">Qty</th><th style="text-align:right;">Rate</th><th style="text-align:right;">Amount</th></tr></thead><tbody>
                         ${inv.items.map(item=>`<tr><td>${item.desc}</td><td style="text-align:center;">${item.qty}</td><td style="text-align:right;">${formatMoney(item.rate)}</td><td style="text-align:right;">${formatMoney(item.qty*item.rate)}</td></tr>`).join('')}
@@ -1876,11 +1870,40 @@
             const tbody = document.getElementById('invoicesTable'); const empty = document.getElementById('invoicesEmpty');
             if(!filtered.length){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
             empty.classList.add('hidden');
-            tbody.innerHTML = filtered.map(inv => `<tr><td><strong>${inv.number}</strong></td><td>${getClientName(inv.clientId)}</td><td>${formatDateDisplay(inv.date)}</td><td>${formatDateDisplay(inv.due)}</td><td><strong>${formatMoney(inv.total)}</strong></td><td><span class="badge badge-${inv.status}">${inv.status}</span></td><td>${inv.staffName||'Owner'}</td><td><div class="action-btns"><button class="action-btn view" onclick="viewInvoice('${inv.id}')" title="View"><i class="fas fa-eye"></i></button><button class="action-btn edit" onclick="editInvoice('${inv.id}')" title="Edit"><i class="fas fa-edit"></i></button><button class="action-btn pay" onclick="quickMarkPaid('${inv.id}')" title="Mark Paid"><i class="fas fa-check"></i></button><button class="action-btn print" onclick="printInvoiceById('${inv.id}')" title="Print"><i class="fas fa-print"></i></button><button class="action-btn delete" onclick="deleteInvoice('${inv.id}')" title="Delete"><i class="fas fa-trash"></i></button></div></td></tr>`).join('');
+            tbody.innerHTML = filtered.map(inv => `<tr><td><strong>${inv.number}</strong></td><td>${getClientName(inv.clientId)}</td><td>${formatDateDisplay(inv.date)}</td><td>${formatDateDisplay(inv.due)}</td><td><strong>${formatMoney(inv.total)}</strong></td><td><span class="badge badge-${inv.status}">${inv.status}</span></td><td>${inv.assignedStaffId ? (window.AppState.staff.find(s=>s.id===inv.assignedStaffId)?.name || inv.staffName || 'Staff') : (inv.staffName||'Owner')}</td><td><div class="action-btns"><button class="action-btn view" onclick="viewInvoice('${inv.id}')" title="View"><i class="fas fa-eye"></i></button>${window.AppState.profile.role==='owner'?`<button class="action-btn edit" onclick="editInvoice('${inv.id}')" title="Edit"><i class="fas fa-edit"></i></button>`:''}<button class="action-btn pay" onclick="quickMarkPaid('${inv.id}')" title="Mark Paid"><i class="fas fa-check"></i></button><button class="action-btn print" onclick="printInvoiceById('${inv.id}')" title="Print"><i class="fas fa-print"></i></button>${window.AppState.profile.role==='owner'?`<button class="action-btn delete" onclick="deleteInvoice('${inv.id}')" title="Delete"><i class="fas fa-trash"></i></button>`:''}</div></td></tr>`).join('');
         };
         window.quickMarkPaid = async (id) => {
             await updateDoc(doc(db, 'invoices', id), { status: 'paid', paidDate: new Date().toISOString().split('T')[0] });
             showToast('Invoice marked as paid!');
+        };
+        function updateStaffSelector() {
+            const sel = document.getElementById('inv-staff-id');
+            if(!sel) return;
+            sel.innerHTML = '<option value="">Select Staff Member...</option>' + window.AppState.staff.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+        }
+
+        // ==================== INVOICE BARCODE ====================
+        window.openInvoiceBarcodeModal = () => {
+            document.getElementById('invoiceBarcodeModal').classList.add('active');
+            const reader = document.getElementById('invoice-barcode-reader'); if(!reader) return;
+            reader.innerHTML = '';
+            window.AppState.invoiceBarcodeScanner = new Html5Qrcode('invoice-barcode-reader');
+            window.AppState.invoiceBarcodeScanner.start({ facingMode: 'environment' }, { fps: 10, qrbox: { width: 250, height: 250 } },
+                (decodedText) => {
+                    const prod = window.AppState.stock.find(s => s.barcode === decodedText);
+                    if(prod) {
+                        const container = document.getElementById('invoiceItems');
+                        const row = document.createElement('div'); row.className='item-row';
+                        row.innerHTML = `<input type="text" class="form-control item-desc" value="${prod.name}" readonly oninput="updateTotals()"><input type="number" class="form-control item-qty" value="1" min="1" max="${prod.qty}" oninput="updateTotals()"><input type="number" class="form-control item-rate" value="${prod.price}" min="0" step="0.01" oninput="updateTotals()"><input type="text" class="form-control item-amount" readonly value="$0.00"><button class="remove-item" onclick="this.parentElement.remove(); updateTotals();"><i class="fas fa-times"></i></button>`;
+                        container.appendChild(row); updateTotals(); showToast('Added: ' + prod.name);
+                    } else { showToast('Product not found in stock','warning'); }
+                    closeInvoiceBarcodeModal();
+                }, (err) => {}
+            ).catch(e => showToast('Camera error: ' + e.message, 'error'));
+        };
+        window.closeInvoiceBarcodeModal = () => {
+            document.getElementById('invoiceBarcodeModal').classList.remove('active');
+            if(window.AppState.invoiceBarcodeScanner) { window.AppState.invoiceBarcodeScanner.stop().catch(()=>{}); window.AppState.invoiceBarcodeScanner = null; }
         };
 
         // ==================== STOCK ====================
@@ -1939,53 +1962,34 @@
             const tbody = document.getElementById('stockTable'); const empty = document.getElementById('stockEmpty');
             if(!filtered.length){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
             empty.classList.add('hidden');
+            const isOwner = window.AppState.profile.role === 'owner';
             tbody.innerHTML = filtered.map(s => {
                 const isLow = s.qty <= (s.threshold||5);
-                const isOwner = window.AppState.profile.role === 'owner';
                 return `<tr><td><strong>${s.name}</strong></td><td><code>${s.barcode||'-'}</code></td><td>${formatMoney(s.price)}</td><td class="${isLow?'stock-low':'stock-ok'}">${s.qty}</td><td>${isLow?'<span class="badge badge-overdue">Low Stock</span>':'<span class="badge badge-paid">OK</span>'}</td><td>${isOwner?`<div class="action-btns"><button class="action-btn edit" onclick="editStock('${s.id}')" title="Edit"><i class="fas fa-edit"></i></button><button class="action-btn delete" onclick="deleteStock('${s.id}')" title="Delete"><i class="fas fa-trash"></i></button></div>`:'-'}</td></tr>`;
             }).join('');
         };
         function checkStockAlerts() {
             const lowItems = window.AppState.stock.filter(s => s.qty <= (s.threshold||5));
             const badge = document.getElementById('stockAlertBadge');
+            const badgeStaff = document.getElementById('stockAlertBadgeStaff');
             if(badge) { if(lowItems.length) { badge.textContent = lowItems.length; badge.classList.remove('hidden'); } else badge.classList.add('hidden'); }
+            if(badgeStaff) { if(lowItems.length) { badgeStaff.textContent = lowItems.length; badgeStaff.classList.remove('hidden'); } else badgeStaff.classList.add('hidden'); }
             const box = document.getElementById('stockAlerts');
-            if(box) { if(lowItems.length) box.innerHTML = `<div class="alert-banner"><i class="fas fa-exclamation-triangle"></i> ${lowItems.length} product(s) running low on stock: ${lowItems.map(i=>i.name).join(', ')}</div>`; else box.innerHTML = ''; }
+            if(box) { if(lowItems.length) box.innerHTML = `<div class="alert-banner"><i class="fas fa-exclamation-triangle"></i> ${lowItems.length} product(s) running low: ${lowItems.map(i=>i.name).join(', ')}</div>`; else box.innerHTML = ''; }
             const dash = document.getElementById('dashboardAlerts');
             if(dash && lowItems.length) dash.innerHTML = `<div class="alert-banner" style="margin-bottom:24px;background:#fee2e2;"><i class="fas fa-box-open"></i> <strong>Stock Alert:</strong> ${lowItems.map(i=>i.name).join(', ')} - Low Stock!</div>`;
             else if(dash) dash.innerHTML = '';
         }
 
         // ==================== BARCODE ====================
-        window.openBarcodeModal = () => { window.AppState.barcodeContext = 'stock'; document.getElementById('barcodeModal').classList.add('active'); startBarcodeScanner(); };
-        window.openBarcodeModalForInvoice = () => { window.AppState.barcodeContext = 'invoice'; document.getElementById('barcodeModal').classList.add('active'); startBarcodeScanner(); };
+        window.openBarcodeModal = () => { document.getElementById('barcodeModal').classList.add('active'); startBarcodeScanner(); };
         window.closeBarcodeModal = () => { document.getElementById('barcodeModal').classList.remove('active'); stopBarcodeScanner(); };
         function startBarcodeScanner() {
             const reader = document.getElementById('barcode-reader'); if(!reader) return;
             reader.innerHTML = '';
             window.AppState.barcodeScanner = new Html5Qrcode('barcode-reader');
             window.AppState.barcodeScanner.start({ facingMode: 'environment' }, { fps: 10, qrbox: { width: 250, height: 250 } },
-                (decodedText) => { 
-                    if(window.AppState.barcodeContext === 'invoice') {
-                        const prod = window.AppState.stock.find(s => s.barcode === decodedText);
-                        if(prod) {
-                            const container = document.getElementById('invoiceItems');
-                            const row = document.createElement('div'); row.className='item-row';
-                            row.innerHTML = `<input type="text" class="form-control item-desc" value="${prod.name}" readonly oninput="updateTotals()"><input type="number" class="form-control item-qty" value="1" min="1" max="${prod.qty}" oninput="updateTotals()"><input type="number" class="form-control item-rate" value="${prod.price}" min="0" step="0.01" oninput="updateTotals()"><input type="text" class="form-control item-amount" readonly value="$0.00"><button class="remove-item" onclick="this.parentElement.remove(); updateTotals();"><i class="fas fa-times"></i></button>`;
-                            container.appendChild(row); updateTotals();
-                            showToast('Added: ' + prod.name);
-                        } else {
-                            showToast('Product not found for barcode: ' + decodedText, 'warning');
-                        }
-                        closeBarcodeModal();
-                    } else {
-                        document.getElementById('stock-barcode').value = decodedText; 
-                        showToast('Barcode scanned: ' + decodedText); 
-                        closeBarcodeModal(); 
-                        const prod = window.AppState.stock.find(s => s.barcode === decodedText); 
-                        if(prod) showToast('Found product: ' + prod.name); 
-                    }
-                },
+                (decodedText) => { document.getElementById('stock-barcode').value = decodedText; showToast('Barcode scanned: ' + decodedText); closeBarcodeModal(); const prod = window.AppState.stock.find(s => s.barcode === decodedText); if(prod) showToast('Found product: ' + prod.name); },
                 (err) => {}
             ).catch(e => showToast('Camera error: ' + e.message, 'error'));
         }
@@ -1998,110 +2002,59 @@
                 window.AppState.staff = [];
                 snap.forEach(d => window.AppState.staff.push({id:d.id, ...d.data()}));
                 if(window.AppState.currentPage==='staff') renderStaff();
+                updateStaffSelector();
             });
         }
+        window.previewStaffPhoto = (e) => {
+            const file = e.target.files[0]; if(!file) return;
+            window.AppState.staffPhotoFile = file;
+            const url = URL.createObjectURL(file);
+            document.getElementById('staffPhotoPreview').src = url; document.getElementById('staffPhotoPreview').classList.remove('hidden');
+            document.getElementById('staffPhotoIcon').classList.add('hidden');
+        };
         window.openStaffModal = () => {
             document.getElementById('staff-name').value = ''; document.getElementById('staff-email').value = '';
-            document.getElementById('staff-phone').value = ''; document.getElementById('staff-temp-pass').value = 'staff1234';
-            document.getElementById('staffPhotoPreview').style.display = 'none';
-            document.getElementById('staffPhotoIcon').style.display = 'block';
-            window.AppState.staffPhotoFile = null;
+            document.getElementById('staff-phone').value = ''; window.AppState.staffPhotoFile = null;
+            document.getElementById('staffPhotoPreview').classList.add('hidden'); document.getElementById('staffPhotoIcon').classList.remove('hidden');
             document.getElementById('staffModal').classList.add('active');
         };
         window.closeStaffModal = () => document.getElementById('staffModal').classList.remove('active');
-        window.handleStaffPhoto = (e) => {
-            const file = e.target.files[0]; if(!file) return;
-            window.AppState.staffPhotoFile = file;
-            const preview = document.getElementById('staffPhotoPreview');
-            preview.src = URL.createObjectURL(file); preview.style.display = 'block';
-            document.getElementById('staffPhotoIcon').style.display = 'none';
-        };
         window.saveStaff = async () => {
             const name = document.getElementById('staff-name').value.trim();
             const email = document.getElementById('staff-email').value.trim();
             const phone = document.getElementById('staff-phone').value.trim();
-            const tempPass = document.getElementById('staff-temp-pass').value || 'staff1234';
+            const tempPass = document.getElementById('staff-temp-pass').value;
             if(!name||!email){ showToast('Please fill required fields','error'); return; }
             showLoading(true);
             try {
-                // Create auth user via REST API so owner doesn't get logged out
-                const signUpRes = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, {
-                    method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({email, password: tempPass, returnSecureToken: true})
-                });
-                const authData = await signUpRes.json();
-                if(authData.error) { showToast(authData.error.message, 'error'); showLoading(false); return; }
-                
-                // Update profile via REST
-                await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${API_KEY}`, {
-                    method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({idToken: authData.idToken, displayName: name, returnSecureToken: true})
-                });
-                
-                // Send email verification
-                await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${API_KEY}`, {
-                    method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({requestType: 'VERIFY_EMAIL', idToken: authData.idToken})
-                });
-                
                 let photoURL = '';
                 if(window.AppState.staffPhotoFile) {
-                    const fileRef = ref(storage, 'photos/staff_' + authData.localId + '_' + Date.now());
+                    const fileRef = ref(storage, 'photos/staff_' + Date.now());
                     await uploadBytes(fileRef, window.AppState.staffPhotoFile);
                     photoURL = await getDownloadURL(fileRef);
                 }
-                
-                await setDoc(doc(db, 'users', authData.localId), {
-                    uid: authData.localId, name, email, phone, role: 'staff',
+                const cred = await createUserWithEmailAndPassword(auth, email, tempPass);
+                await updateProfile(cred.user, { displayName: name });
+                await setDoc(doc(db, 'users', cred.user.uid), {
+                    uid: cred.user.uid, name, email, phone, role: 'staff',
                     ownerId: window.AppState.user.uid, ownerEmail: window.AppState.profile.email,
-                    businessName: window.AppState.profile.businessName || '',
-                    photoURL, createdAt: serverTimestamp(), planExpiry: window.AppState.profile.planExpiry || null
+                    businessName: window.AppState.profile.businessName||'', photoURL,
+                    createdAt: serverTimestamp(), planExpiry: null
                 });
-                
-                showToast('Staff registered! Temporary password: ' + tempPass);
+                showToast('Staff registered successfully!');
                 closeStaffModal();
             } catch(e) { showToast(e.message,'error'); }
             showLoading(false);
         };
         window.resetStaffPassword = async (email) => {
-            try {
-                await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${API_KEY}`, {
-                    method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({requestType: 'PASSWORD_RESET', email})
-                });
-                showToast('Password reset email sent to staff member');
-            } catch(e) { showToast('Failed to send reset email', 'error'); }
+            try { await sendPasswordResetEmail(auth, email); showToast('Password reset email sent to ' + email); }
+            catch(e){ showToast(e.message,'error'); }
         };
         function renderStaff() {
             const isOwner = window.AppState.profile.role === 'owner';
             const grid = document.getElementById('staffGrid');
-            
-            // Owner card
-            const owner = window.AppState.profile;
-            grid.innerHTML = `<div class="staff-card">
-                ${owner.photoURL ? `<img src="${owner.photoURL}" class="staff-avatar" style="padding:0;">` : `<div class="staff-avatar">${(owner.name||'O').substring(0,2).toUpperCase()}</div>`}
-                <h4>${owner.name}</h4>
-                <p>${owner.email}</p>
-                <p>${owner.phone||''}</p>
-                <span class="role-badge role-owner">OWNER</span>
-            </div>`;
-            
-            // Staff cards
-            grid.innerHTML += window.AppState.staff.map(s => `
-                <div class="staff-card">
-                    ${s.photoURL ? `<img src="${s.photoURL}" class="staff-avatar" style="padding:0;">` : `<div class="staff-avatar">${(s.name||'S').substring(0,2).toUpperCase()}</div>`}
-                    <h4>${s.name}</h4>
-                    <p>${s.email}</p>
-                    <p>${s.phone||''}</p>
-                    <span class="role-badge role-staff">STAFF</span>
-                    ${isOwner ? `<div style="margin-top:12px;"><button class="btn btn-outline btn-sm" onclick="resetStaffPassword('${s.email}')"><i class="fas fa-key"></i> Reset Password</button></div>` : ''}
-                </div>
-            `).join('');
-            
+            const ownerCard = `<div class="staff-card"><div class="staff-avatar">${window.AppState.profile.photoURL?`<img src="${window.AppState.profile.photoURL}">`:(window.AppState.profile.name||'O').substring(0,2).toUpperCase()}</div><h4>${window.AppState.profile.name}</h4><p>${window.AppState.profile.email}</p><p>${window.AppState.profile.phone||''}</p><span class="role-badge role-owner">OWNER</span></div>`;
+            grid.innerHTML = ownerCard + window.AppState.staff.map(s => `<div class="staff-card"><div class="staff-avatar">${s.photoURL?`<img src="${s.photoURL}">`:(s.name||'S').substring(0,2).toUpperCase()}</div><h4>${s.name}</h4><p>${s.email}</p><p>${s.phone||''}</p><span class="role-badge role-staff">STAFF</span>${isOwner?`<div style="margin-top:12px;"><button class="btn btn-outline btn-sm" onclick="resetStaffPassword('${s.email}')"><i class="fas fa-key"></i> Reset Password</button></div>`:''}</div>`).join('');
             const allInvoices = window.AppState.invoices;
             const tbody = document.getElementById('staffInvoicesTable');
             const staffInvs = allInvoices.filter(i=>i.staffId!==window.AppState.user.uid);
@@ -2124,6 +2077,7 @@
             document.getElementById('receiptFile').value = '';
             document.getElementById('receiptPreview').classList.add('hidden');
             document.getElementById('ocrResultBox').classList.add('hidden');
+            document.getElementById('aiVerifyBadge').innerHTML = '';
             window.AppState.receiptImage = null;
         };
         window.handleReceiptUpload = async (e) => {
@@ -2137,8 +2091,16 @@
                 window.AppState.ocrText = result.data.text;
                 document.getElementById('ocrResult').textContent = window.AppState.ocrText;
                 document.getElementById('ocrResultBox').classList.remove('hidden');
-                const amountMatch = window.AppState.ocrText.match(/(?:rs|usd|\$|€|£)?\s*([0-9,]+\.?[0-9]{0,2})/i);
-                if(amountMatch) showToast('AI detected amount: ' + amountMatch[1]);
+                const expectedAmount = parseFloat(document.getElementById('receipt-amount').value);
+                const amountMatches = window.AppState.ocrText.includes(String(expectedAmount)) || window.AppState.ocrText.includes(expectedAmount.toFixed(2));
+                const badge = document.getElementById('aiVerifyBadge');
+                if(amountMatches) {
+                    badge.innerHTML = `<span class="ai-badge ai-verified"><i class="fas fa-robot"></i> AI Verified: Amount Matched ($${expectedAmount})</span>`;
+                    showToast('AI verification passed! Amount matched.');
+                } else {
+                    badge.innerHTML = `<span class="ai-badge ai-failed"><i class="fas fa-robot"></i> AI Check: Amount Not Detected</span>`;
+                    showToast('AI could not verify amount. Please check manually.','warning');
+                }
             } catch(err) { showToast('OCR failed, but you can still submit','warning'); }
             document.getElementById('ocrProgress').classList.add('hidden');
         };
@@ -2149,13 +2111,23 @@
                 const fileRef = ref(storage, 'receipts/' + Date.now() + '_' + window.AppState.receiptImage.name);
                 await uploadBytes(fileRef, window.AppState.receiptImage);
                 const url = await getDownloadURL(fileRef);
+                const expectedAmount = parseFloat(document.getElementById('receipt-amount').value);
+                const aiVerified = window.AppState.ocrText && (window.AppState.ocrText.includes(String(expectedAmount)) || window.AppState.ocrText.includes(expectedAmount.toFixed(2)));
                 await addDoc(collection(db, 'submissions'), {
                     userId: window.AppState.user.uid, userName: window.AppState.profile.name, userEmail: window.AppState.profile.email,
                     planId: document.getElementById('receipt-plan-id').value, planName: document.getElementById('receipt-plan').value,
-                    days: parseInt(document.getElementById('receipt-plan-days').value), amount: parseFloat(document.getElementById('receipt-amount').value),
-                    receiptUrl: url, ocrText: window.AppState.ocrText, status: 'pending', submittedAt: serverTimestamp()
+                    days: parseInt(document.getElementById('receipt-plan-days').value), amount: expectedAmount,
+                    receiptUrl: url, ocrText: window.AppState.ocrText, aiVerified,
+                    status: aiVerified ? 'approved' : 'pending', submittedAt: serverTimestamp()
                 });
-                showToast('Receipt submitted for approval!'); closeReceiptModal();
+                if(aiVerified) {
+                    const expiry = new Date(); expiry.setDate(expiry.getDate() + parseInt(document.getElementById('receipt-plan-days').value));
+                    await updateDoc(doc(db, 'users', window.AppState.user.uid), { planExpiry: expiry.toISOString() });
+                    showToast('Receipt verified by AI! Plan activated.');
+                } else {
+                    showToast('Receipt submitted for manual approval.');
+                }
+                closeReceiptModal();
             } catch(e) { showToast(e.message,'error'); }
             showLoading(false);
         };
@@ -2165,7 +2137,7 @@
                 const card = document.getElementById('pendingSubmissionsCard');
                 if(!subs.length){ card.classList.add('hidden'); return; }
                 card.classList.remove('hidden');
-                document.getElementById('pendingSubmissionsTable').innerHTML = subs.map(s => `<tr><td>${s.userName}<br><small style="color:var(--gray)">${s.userEmail}</small></td><td>${s.planName}</td><td>$${s.amount}</td><td>${s.submittedAt?.toDate?.().toLocaleDateString?.() || '-'}</td><td><span class="badge badge-pending">Pending</span></td><td><div class="action-btns"><button class="action-btn view" onclick="viewReceipt('${s.receiptUrl}')" title="View Receipt"><i class="fas fa-eye"></i></button><button class="action-btn approve" onclick="approveSubmission('${s.id}', ${s.days}, '${s.userId}')" title="Approve"><i class="fas fa-check"></i></button><button class="action-btn reject" onclick="rejectSubmission('${s.id}')" title="Reject"><i class="fas fa-times"></i></button></div></td></tr>`).join('');
+                document.getElementById('pendingSubmissionsTable').innerHTML = subs.map(s => `<tr><td>${s.userName}<br><small style="color:var(--gray)">${s.userEmail}</small></td><td>${s.planName}</td><td>$${s.amount}</td><td>${s.submittedAt?.toDate?.().toLocaleDateString?.() || '-'}</td><td>${s.aiVerified?'<span class="ai-badge ai-verified"><i class="fas fa-check"></i> Matched</span>':'<span class="ai-badge ai-pending"><i class="fas fa-question"></i> Unclear</span>'}</td><td><span class="badge badge-pending">Pending</span></td><td><div class="action-btns"><button class="action-btn view" onclick="viewReceipt('${s.receiptUrl}')" title="View Receipt"><i class="fas fa-eye"></i></button><button class="action-btn approve" onclick="approveSubmission('${s.id}', ${s.days}, '${s.userId}')" title="Approve"><i class="fas fa-check"></i></button><button class="action-btn reject" onclick="rejectSubmission('${s.id}')" title="Reject"><i class="fas fa-times"></i></button></div></td></tr>`).join('');
             });
         }
         window.viewReceipt = (url) => { window.open(url, '_blank'); };
@@ -2201,7 +2173,10 @@
             document.getElementById('stat-clients').textContent = window.AppState.clients.length;
             document.getElementById('stat-pending').textContent = formatMoney(pending);
             const recent = [...window.AppState.invoices].sort((a,b)=> new Date(b.date)-new Date(a.date)).slice(0,5);
-            document.getElementById('recentInvoicesTable').innerHTML = recent.map(inv=>`<tr><td><strong>${inv.number}</strong></td><td>${getClientName(inv.clientId)}</td><td>${formatDateDisplay(inv.date)}</td><td><strong>${formatMoney(inv.total)}</strong></td><td><span class="badge badge-${inv.status}">${inv.status}</span></td></tr>`).join('');
+            document.getElementById('recentInvoicesTable').innerHTML = recent.map(inv=>{
+                const staffInfo = inv.assignedStaffId ? (window.AppState.staff.find(st=>st.id===inv.assignedStaffId)?.name || inv.staffName || 'Staff') : (inv.staffName || 'Owner');
+                return `<tr><td><strong>${inv.number}</strong></td><td>${getClientName(inv.clientId)}</td><td>${formatDateDisplay(inv.date)}</td><td><strong>${formatMoney(inv.total)}</strong></td><td><span class="badge badge-${inv.status}">${inv.status}</span></td><td>${staffInfo}</td></tr>`;
+            }).join('');
             renderCharts(); checkStockAlerts();
         }
         function renderReports() {
